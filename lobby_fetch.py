@@ -16,9 +16,9 @@ def latest_contributions():
     print(response.json())
 
 
-def latest_filings():
+def latest_filings(range=1):
     url = base_url + "filings/"
-    yesterday = (date.today() - timedelta(days=200)).isoformat()
+    yesterday = (date.today() - timedelta(days=range)).isoformat()
     headers = {"Authorization": auth_key}
     params = {"filing_dt_posted_after": yesterday, "affiliated_organization_country": ["US"],
               "filing_amount_min": "10000"}
